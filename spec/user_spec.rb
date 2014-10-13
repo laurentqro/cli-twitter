@@ -13,7 +13,7 @@ describe User do
   end
 
   it "publishes a message" do
-    subject.post(:message)
+    subject.publish(:message)
     expect(subject.messages).to include(:message)
   end
 

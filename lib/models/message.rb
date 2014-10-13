@@ -1,6 +1,9 @@
 class Message
-  def initialize(text, user)
-    @text = text
-    @user = user
+  attr_reader :text, :user, :publication_date
+
+  def initialize(args)
+    @text = args[:text]
+    @user = args[:user]
+    @publication_date = Time.now
   end
 end
