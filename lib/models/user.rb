@@ -18,4 +18,8 @@ class User
     @subscriptions << subscription
     subscription
   end
+
+  def subscribers
+    subscriptions.map { |subscription| subscription.subscribed }
+  end
 end
