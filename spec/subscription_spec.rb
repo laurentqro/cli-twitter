@@ -3,7 +3,6 @@ require_relative '../lib/application'
 describe Subscription do
   let(:charlie) { User.new('Charlie') }
   let(:alice) { User.new('Alice') }
-  let(:bob) { User.new('Bob') }
 
   subject(:subscription) { Subscription.new(:charlie, :alice) }
 

@@ -1,9 +1,7 @@
 class Timeline
-  def self.show_for(user)
-    output = ""
-    user.messages.each do |message|
-      output += "#{message.text}\n"
-    end
-    output
+
+  def self.for(user)
+    user.messages.map { |message| "#{message.text}, #{message.publication_date}" }.join("\n")
   end
+
 end

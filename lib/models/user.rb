@@ -7,11 +7,15 @@ class User
     @subscriptions = []
   end
 
-  def publish(message)
+  def publish(text)
+    message = Message.new(text)
     @messages << message
+    message
   end
 
-  def subscribe_to(another_user)
-    @subscriptions << Subscription.new(self, another_user)
+  def subscribe_to(user)
+    subscription = Subscription.new(self, user)
+    @subscriptions << subscription
+    subscription
   end
 end
