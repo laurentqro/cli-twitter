@@ -7,24 +7,27 @@ describe Wall do
     @bob = User.new('Bob')
     @charlie = User.new('Charlie')
 
-    @charlie_message = @charlie.publish('I\'m in New York today! Anyone want to have a coffee?')
-    @alice_message = @alice.publish('I love the weather today')
-    @bob_message = @bob.publish('Damn! We lost!')
+    @charlie_message = @charlie.publish({ text: 'I\'m in New York today! Anyone want to have a coffee?', author: "Charlie" })
+    @alice_message = @alice.publish({ text: 'I love the weather today', author: "Alice" })
+    @bob_message = @bob.publish({ text: 'Damn! We lost!', author: "Bob" })
 
-    @charlie.subscribe_to(@alice)
-    @charlie.subscribe_to(@bob)
-
+    @charlie.follow(@alice)
+    @charlie.follow(@bob)
   end
 
-  describe "#for" do
+  describe "#get_wall_messages_for" do
     it "contains the messages of followed users" do
-      expect(Wall.for(@charlie)).to include @alice_message && @bob_message
+      expect(Wall.get_wall_messages_for(@charlie)).to include @alice_message && @bob_message
     end
 
-    it "displays messages sorted most recent first" do
-      wall_messages = Wall.for(@charlie)
+    it "lists messages sorted most recent first" do
+      wall_messages = Wall.get_wall_messages_for(@charlie)
 
       expect([wall_messages[0], wall_messages[1], wall_messages[2]]).to eql [@bob_message, @charlie_message, @alice_message].sort_by(&:publication_date).reverse!
+    end
+
+    it "formats and displays a user's wall" do
+      expect(Wall.for(@charlie)).to include "I\'m in New York today! Anyone want to have a coffee?" && "I love the weather today" && "Damn! We lost!"
     end
 
   end
