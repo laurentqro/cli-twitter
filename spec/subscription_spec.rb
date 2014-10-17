@@ -14,8 +14,8 @@ describe Subscription do
     expect(subject.subscriber).to eql :charlie
   end
 
-  it "has a subscribed" do
-    expect(subject.subscribed).to eql :alice
+  it "has a subscribee" do
+    expect(subject.subscribee).to eql :alice
   end
 
 end

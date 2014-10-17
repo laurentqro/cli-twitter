@@ -1,8 +1,8 @@
 class Subscription
-  attr_accessor :subscriber, :subscribed
+  attr_accessor :subscriber, :subscribee
 
-  def initialize(subscriber, subscribed)
+  def initialize(subscriber, subscribee)
     @subscriber = subscriber
-    @subscribed = subscribed
+    @subscribee = subscribee
   end
 end
