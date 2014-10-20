@@ -1,8 +1,8 @@
 require_relative '../lib/application'
 
-describe Message do
-  let(:bob) { User.new('Bob') }
-  subject(:message) { Message.new({ text: 'Good game though.', author: 'Bob' }) }
+describe TwitterCli::Message do
+  let(:bob) { TwitterCli::User.new('Bob') }
+  subject(:message) { TwitterCli::Message.new({ text: 'Good game though.', author: 'Bob' }) }
 
   it "has a timestamp" do
     expect(subject.publication_date).to be_kind_of(Time)

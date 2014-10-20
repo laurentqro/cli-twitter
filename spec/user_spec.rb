@@ -1,10 +1,10 @@
 require_relative '../lib/application'
 
-describe User do
-  subject(:alice) { User.new('Alice') }
+describe TwitterCli::User do
+  subject(:alice) { TwitterCli::User.new('Alice') }
 
   it "exists" do
-    expect(subject).to be_kind_of(User)
+    expect(subject).to be_kind_of(TwitterCli::User)
   end
 
   it "has a name" do
@@ -20,8 +20,8 @@ describe User do
 
   describe "#follow" do
     it "subscribes a user to another user's timeline" do
-      bob = User.new('Bob')
-      alice = User.new("Alice")
+      bob = TwitterCli::User.new('Bob')
+      alice = TwitterCli::User.new("Alice")
       expect{ alice.follow(bob) }.to change{ bob.followers.count }.by(1)
       expect{ alice.follow(bob) }.to change{ alice.following.count }.by(1)
     end
@@ -29,8 +29,8 @@ describe User do
 
   describe "#followers" do
     it "returns a list of followers" do
-      bob = User.new('Bob')
-      alice = User.new("Alice")
+      bob = TwitterCli::User.new('Bob')
+      alice = TwitterCli::User.new("Alice")
       alice.follow(bob)
       expect(bob.followers).to include alice
     end
@@ -38,8 +38,8 @@ describe User do
 
   describe "#following" do
     it "returns a list of followed users" do
-      bob = User.new('Bob')
-      alice = User.new("Alice")
+      bob = TwitterCli::User.new('Bob')
+      alice = TwitterCli::User.new("Alice")
       alice.follow(bob)
       expect(alice.following).to include bob
     end
@@ -63,9 +63,9 @@ describe User do
 
   describe "#wall" do
     before(:example) do
-      @alice = User.new('Alice')
-      @bob = User.new('Bob')
-      @charlie = User.new('Charlie')
+      @alice = TwitterCli::User.new('Alice')
+      @bob = TwitterCli::User.new('Bob')
+      @charlie = TwitterCli::User.new('Charlie')
 
       @charlie_message = @charlie.publish({ text: 'I\'m in New York today! Anyone want to have a coffee?', author: "Charlie" })
       @alice_message = @alice.publish({ text: 'I love the weather today', author: "Alice" })
