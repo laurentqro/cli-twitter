@@ -48,3 +48,9 @@
 * Non-existing users should be created as they post their first message. Application should not start with a pre-defined list of users.
 * Use whichever language, libraries, frameworks and tools you like.
 * Provide instructions on how to run the application.
+
+## Usage
+
+In your terminal, enter ``bin/cli-twitter`` to run the a new session of CLI-Twitter.
+
+To quit, enter ``Ctrl`` + ``C``.
