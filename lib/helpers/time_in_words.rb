@@ -5,7 +5,7 @@ module TimeInWords
   def self.time_ago_in_words(time)
     to_time = Time.now
     from_time = time
-    distance_of_time_in_words(from_time, to_time) + " ago"
+    distance_of_time_in_words(from_time, to_time).to_s + " ago"
   end
 
   def self.distance_of_time_in_words(from_time, to_time)
