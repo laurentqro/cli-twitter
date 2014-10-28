@@ -1,6 +1,4 @@
-# Exercise
-
-**Implement a console-based social networking application (similar to Twitter) satisfying the scenarios below.**
+**CLI Twitter is a console-based social networking application that satisfies the scenarios below.**
 
 ---
 
@@ -35,7 +33,7 @@
     Bob - Damn! We lost! (2 minutes ago)
     Alice - I love the weather today (5 minutes ago)
 
-## Details
+## Details of the exercise
 
 * The application must use the console for input and output.
 * Users submit commands to the application. There are four commands. “posting”, “reading”, etc. are not part of the commands; commands always start with the user’s name.
@@ -49,8 +47,12 @@
 * Use whichever language, libraries, frameworks and tools you like.
 * Provide instructions on how to run the application.
 
-## Usage
+## Usage instructions
 
-In your terminal, enter ``bin/cli-twitter`` to run the a new session of CLI-Twitter.
+With your terminal, ``cd`` into the application's directory and enter ``bin/cli-twitter`` to run a new session of CLI-Twitter.
 
 To quit, enter ``Ctrl`` + ``C``.
+
+## Tests
+
+Tests written with Rspec and Cucumber.
