@@ -49,11 +49,15 @@ module TwitterCli
     end
 
     def format_wall_output(messages)
-      messages.map { |message| "#{message.author} - #{message.text}" }.join("\n")
+      messages.map { |message| "#{message.author} - #{message.text} (#{ publication_date_in_words(message.publication_date) })" }.join("\n")
     end
 
     def format_timeline_output(messages)
-      messages.map { |message| "#{message.text}" }.join("\n")
+      messages.map { |message| "#{message.text} (#{ publication_date_in_words(message.publication_date) })" }.join("\n")
+    end
+
+    def publication_date_in_words(date)
+      TimeInWords.time_ago_in_words(date)
     end
   end
 end
