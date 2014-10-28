@@ -1,4 +1,4 @@
-require_relative '../lib/application'
+require_relative '../lib/cli-twitter/application'
 
 describe TwitterCli::Message do
   let(:bob) { TwitterCli::User.new('Bob') }
