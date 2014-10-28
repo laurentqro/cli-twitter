@@ -7,7 +7,7 @@ module TwitterCli
         when /^([a-zA-Z]+)$/
           name = $1.to_s
           user = TwitterCli::User.users.detect { |user| user.name == name } || TwitterCli::User.new(name)
-          user.timeline
+          user.timeline.empty? ? nil : user.timeline
 
         # when input is of format [name] -> [message]
         when /^(\w+)(\s->\s)([\w|\W\s|!?]+)$/
@@ -30,7 +30,7 @@ module TwitterCli
         when /^(\w+)(\swall)$/
           name = $1.to_s
           user = TwitterCli::User.users.detect { |user| user.name == name } || TwitterCli::User.new(name)
-          user.wall
+          user.wall.empty? ? nil : user.wall
       end
     end
 
