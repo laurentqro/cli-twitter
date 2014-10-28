@@ -1,8 +1,10 @@
 #!/usr/bin/env bundle exec ruby
 
 require 'readline'
+require_relative "../lib/terminal"
 
-require_relative "../lib/cli-twitter/terminal"
+controller = TwitterCli::Controller
+app = Terminal.new(ARGV, Kernel, controller)
 
-app = Terminal.new(ARGV, Kernel)
+
 loop { app.interpret(Readline.readline('> ')) }
