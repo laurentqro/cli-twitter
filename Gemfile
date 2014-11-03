@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
-gem 'pry-byebug'
 gem 'aruba'
-gem 'oyster'
 gem 'timecop'
+
+group :test, :development do
+	gem 'rspec'
+	gem 'pry-byebug'
+end
