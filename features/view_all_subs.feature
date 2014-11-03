@@ -4,7 +4,7 @@ Feature: View aggregated list of all subscriptions
     Given I start the app with "bin/cli-twitter"
     And I entered "Susan -> Hello everyone." 5 minutes ago
     And I entered "Bob -> Damn! We lost!" 2 minutes ago
-    And I entered "Bob -> Good game though." 1 minutes ago
+    And I entered "Bob -> Good game though." 1 minute ago
     And I entered "Charlie -> I'm in New York today! Anyone want to have a coffee?" 15 seconds ago
 
   Scenario: Display aggregated list of all subscriptions
