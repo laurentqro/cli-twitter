@@ -1,26 +1,33 @@
 require 'timecop'
 
-Given(/^I start the app with "(.*?)"$/) do |command|
-  @controller = TwitterCli::Controller
-  @io = StringIO.new
-  @app = Terminal.new(command.split(/\s+/), @io, @controller)
+Given(/^"(.*?)" posted "(.*?)" (\d+) minutes? ago$/) do |user, message, minutes_ago|
+	seconds_ago = minutes_ago.to_f * 60.0
+	command = "#{user} -> #{message}"
+	Timecop.freeze(Time.now - seconds_ago) do
+		@app.interpret(command)
+	end
 end
 
-Given(/^I enter "(.*?)"$/) do |command|
+Given(/^"(.*?)" posted "(.*?)" (\d+) seconds? ago$/) do |user, message, seconds_ago|
+	command = "#{user} -> #{message}"
+	Timecop.freeze(Time.now - seconds_ago.to_f) do
+		@app.interpret(command)
+	end
+end
+
+Given(/^"(.*?)" follows "(.*?)"$/) do |follower, followed|
+  command = "#{follower} follows #{followed}"
   @app.interpret(command)
 end
 
-Given(/^I entered "(.*?)" (\d+) minutes? ago$/) do |command, minutes_ago|
-  seconds_ago = minutes_ago.to_f * 60.0
-  Timecop.freeze(Time.now - seconds_ago) do
-    @app.interpret(command)
-  end
+When(/^I check "(.*?)"'s wall$/) do |user|
+	command = "#{user} wall"
+  @app.interpret(command)
 end
 
-Given(/^I entered "(.*?)" (\d+) seconds? ago$/) do |command, seconds_ago|
-  Timecop.freeze(Time.now - seconds_ago.to_f) do
-    @app.interpret(command)
-  end
+When(/^I check "(.*?)"'s timeline$/) do |user|
+	command = user
+	@app.interpret(command)
 end
 
 Then(/^I should see$/) do |string|
